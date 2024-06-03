@@ -11,33 +11,33 @@ export default function App() {
 
   const handleTestCode = async () => {
     try {
-      const response = await fetch(API_BASE_URL + '/run_code/', {
+      const response = await fetch(`${API_BASE_URL}/run_code/`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code })
       });
       const data = await response.json();
       setOutput(data.output);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error testing code:', error);
     }
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(API_BASE_URL + '/submit_code/', {
+      const response = await fetch(`${API_BASE_URL}/submit_code/`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code })
       });
       const data = await response.json();
-      setOutput(data.output);
+      setOutput("Successfully Submitted!\n" + data.output);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error submitting code:', error);
     }
   };
 
